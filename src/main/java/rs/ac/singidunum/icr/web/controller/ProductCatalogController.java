@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.*;
 import rs.ac.singidunum.icr.persistence.dao.CategoryRepository;
 import rs.ac.singidunum.icr.persistence.dao.ProductRepository;
 import rs.ac.singidunum.icr.persistence.dao.RatingRepository;
+import rs.ac.singidunum.icr.persistence.dao.ShopRepository;
 import rs.ac.singidunum.icr.persistence.model.Category;
 import rs.ac.singidunum.icr.persistence.model.ItemSearchResponse;
 import rs.ac.singidunum.icr.persistence.model.Product;
+import rs.ac.singidunum.icr.persistence.model.Shop;
 import rs.ac.singidunum.icr.service.CatalogService;
 
 import java.util.List;
@@ -25,6 +27,9 @@ public class ProductCatalogController {
 
     @Autowired
     RatingRepository ratingRepository;
+
+    @Autowired
+    ShopRepository shopRepository;
 
     @Autowired
     CatalogService catalogService;
@@ -58,6 +63,14 @@ public class ProductCatalogController {
 
     public void setRatingRepository(RatingRepository ratingRepository) {
         this.ratingRepository = ratingRepository;
+    }
+
+    public ShopRepository getShopRepository() {
+        return shopRepository;
+    }
+
+    public void setShopRepository(ShopRepository shopRepository) {
+        this.shopRepository = shopRepository;
     }
 
     @GetMapping("/products")
@@ -106,4 +119,7 @@ public class ProductCatalogController {
         String name = objectNode.get("name").asText();
         return catalogService.searchProductsAndCategories(name);
     }
+
+    @GetMapping("/shops")
+    public List<Shop> getAllShops() { return shopRepository.findAll(); }
 }
