@@ -19,23 +19,28 @@ public class Shop {
     @Column(name = "weekend_workhours")
     private String weekendWorkhours;
 
+    @Column(name = "tel_number")
+    private String telNumber;
+
     public Shop() {
 
     }
 
-    public Shop(String name, String address, String workdaysWorkhours, String weekendWorkhours) {
+    public Shop(String name, String address, String workdaysWorkhours, String weekendWorkhours, String telNumber) {
         this.setName(name);
         this.setAddress(address);
         this.setWorkdaysWorkhours(workdaysWorkhours);
         this.setWeekendWorkhours(weekendWorkhours);
+        this.setTelNumber(telNumber);
     }
 
-    public Shop(int id, String name, String address, String workdaysWorkhours, String weekendWorkhours) {
+    public Shop(int id, String name, String address, String workdaysWorkhours, String weekendWorkhours, String telNumber) {
         this.setId(id);
         this.setName(name);
         this.setAddress(address);
         this.setWorkdaysWorkhours(workdaysWorkhours);
         this.setWeekendWorkhours(weekendWorkhours);
+        this.setTelNumber(telNumber);
     }
 
     public int getId() {
@@ -78,6 +83,14 @@ public class Shop {
         this.weekendWorkhours = weekendWorkhours;
     }
 
+    public String getTelNumber() {
+        return telNumber;
+    }
+
+    public void setTelNumber(String telNumber) {
+        this.telNumber = telNumber;
+    }
+
     @Override
     public String toString() {
         return "Shop{" +
@@ -86,6 +99,7 @@ public class Shop {
                 ", address='" + address + '\'' +
                 ", workdaysWorkhours='" + workdaysWorkhours + '\'' +
                 ", weekendWorkhours='" + weekendWorkhours + '\'' +
+                ", telNumber='" + telNumber + '\'' +
                 '}';
     }
 }
